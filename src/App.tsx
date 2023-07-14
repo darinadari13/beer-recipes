@@ -5,7 +5,6 @@ import "./App.css";
 const App: React.FC = () => {
   const beers = useBeerStore((state) => state.beers.slice(0, 15));
   const fetchBeers = useBeerStore((state) => state.fetchBeers);
-  const loadMoreBeers = useBeerStore((state) => state.loadMoreBeers);
   const toggleBeerSelection = useBeerStore((state) => state.toggleBeerSelection);
   const selectedRecipes = useBeerStore((state) => state.selectedBeers);
   const deleteSelectedBeers = useBeerStore((state) => state.deleteSelectedBeers);
