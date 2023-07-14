@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useBeerStore } from "./store/beerStore";
+import { useNavigate } from "react-router-dom";
+
 import "./App.css";
 
 const App: React.FC = () => {
@@ -8,6 +10,7 @@ const App: React.FC = () => {
   const toggleBeerSelection = useBeerStore((state) => state.toggleBeerSelection);
   const selectedRecipes = useBeerStore((state) => state.selectedBeers);
   const deleteSelectedBeers = useBeerStore((state) => state.deleteSelectedBeers);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchBeers();
@@ -35,12 +38,25 @@ const App: React.FC = () => {
     deleteSelectedBeers();
   };
 
+  const handleRecipeClick = (event: React.MouseEvent<HTMLLIElement>) => {
+    const target = event.target as HTMLLIElement;
+    const recipeId = parseInt(target.dataset.id || "", 10);
+    if (recipeId) {
+      navigate(`/recipes/${recipeId}`);
+    }
+  };
+
   return (
     <div>
       <h1>Beer Recipes</h1>
       <ul>
         {beers.map((beer) => (
-          <li key={beer.id} data-id={beer.id} className={selectedRecipes.has(beer.id) ? "selected" : ""}>
+          <li
+            key={beer.id}
+            data-id={beer.id}
+            className={selectedRecipes.has(beer.id) ? "selected" : ""}
+            onClick={handleRecipeClick}
+          >
             {beer.name}
           </li>
         ))}
