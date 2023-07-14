@@ -36,10 +36,21 @@ export const useBeerStore = create<BeerStore>((set, get) => ({
       return { selectedBeers };
     });
   },
+
+  //decided to fetch new berr portion inside store
   deleteSelectedBeers: () => {
     set((state) => {
       const beers = state.beers.filter((beer) => !state.selectedBeers.has(beer.id));
-      return { beers, selectedBeers: new Set<number>() };
+      const selectedBeers = new Set<number>();
+      const shouldLoadNextPage = beers.length === 0;
+
+      if (shouldLoadNextPage) {
+        const nextPage = state.page + 1;
+        set({ page: nextPage });
+        get().fetchBeers();
+      }
+
+      return { beers, selectedBeers };
     });
   },
 }));
