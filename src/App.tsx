@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useBeerStore } from "./store/beerStore";
-import { AutoSizer, List } from "react-virtualized";
+import { AutoSizer, List, ListRowProps } from "react-virtualized";
 import "./App.css";
 import Row from "./components/Row/Row";
 import { useNavigate } from "react-router-dom";
-import type { TRowRenderProps } from "./types";
 
 const App: React.FC = () => {
   const beers = useBeerStore((state) => state.beers.slice(0, 15));
@@ -15,8 +14,10 @@ const App: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchBeers();
-  }, [fetchBeers]);
+    if (!beers.length) {
+      fetchBeers();
+    }
+  }, []);
 
   const handleRecipeClick = (recipeId: number) => {
     navigate(`/recipes/${recipeId}`);
@@ -30,11 +31,10 @@ const App: React.FC = () => {
     deleteSelectedBeers();
   };
 
-  const rowRenderer = (props: any) => {
+  const rowRenderer = (props: ListRowProps) => {
     return (
       <Row
         list={beers}
-        key={props.index}
         selectedRows={selectedRecipes}
         {...props}
         onRecipeClick={handleRecipeClick}
