@@ -1,14 +1,14 @@
 import "./Row.css";
+import type { TRowProps } from "./types";
 
-const Row: React.FC<any> = ({ list, index, selectedRows, onRecipeClick, onRightClick, style }: any) => {
+const Row: React.FC<TRowProps> = ({ list, index, selectedRows, onRecipeClick, onRightClick, style }) => {
   const recipe = list[index];
   const recipeId = recipe.id;
-
   const handleRecipeClick = () => {
     onRecipeClick(recipeId);
   };
 
-  const handleRightClick = (e: any) => {
+  const handleRightClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
     onRightClick(recipeId);
   };

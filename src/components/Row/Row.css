@@ -1,10 +1,6 @@
-ul {
-  list-style: none;
-}
-
 .selected {
-  background-color: aqua;
-  border: 1px solid grey;
+  background-color: lightcoral;
+  border: 1px solid #ebeced;
 }
 
 .rowItem {
