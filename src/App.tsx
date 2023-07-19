@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useBeerStore } from "./store/beerStore";
-import { List } from "react-virtualized";
+import { AutoSizer, List } from "react-virtualized";
 import "./App.css";
 import Row from "./components/Row/Row";
 import { useNavigate } from "react-router-dom";
+
+const ARR = new Array(15).fill(null);
 
 const App: React.FC = () => {
   const beers = useBeerStore((state) => state.beers.slice(0, 15));
@@ -44,15 +46,20 @@ const App: React.FC = () => {
 
   return (
     <>
-      <div style={{ border: "1px solid red" }}>
-        <List
-          width={300}
-          height={500}
-          rowCount={beers.length}
-          rowHeight={100}
-          rowRenderer={rowRenderer}
-          overscanRowCount={0}
-        />
+      <h1 className="appHeader">Beer List</h1>
+      <div className="appListContainer">
+        <AutoSizer disableHeight>
+          {({ width }) => (
+            <List
+              width={width}
+              height={500}
+              rowCount={beers.length}
+              rowHeight={100}
+              rowRenderer={rowRenderer}
+              overscanRowCount={0}
+            />
+          )}
+        </AutoSizer>
       </div>
       {selectedRecipes.size > 0 && <button onClick={handleDelete}>Delete</button>}
     </>

@@ -1,4 +1,14 @@
+ul {
+  list-style: none;
+}
+
 .selected {
   background-color: aqua;
   border: 1px solid grey;
+}
+
+.rowItem {
+  border-bottom: 1px solid #ebeced;
+  display: flex;
+  align-items: center;
 }
