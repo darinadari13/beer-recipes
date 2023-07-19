@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/beer-recipes/static/css/main.a6d607d6.css",
+    "main.js": "/beer-recipes/static/js/main.70458831.js",
+    "index.html": "/beer-recipes/index.html",
+    "main.a6d607d6.css.map": "/beer-recipes/static/css/main.a6d607d6.css.map",
+    "main.70458831.js.map": "/beer-recipes/static/js/main.70458831.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6d607d6.css",
+    "static/js/main.70458831.js"
+  ]
+}
