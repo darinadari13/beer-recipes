@@ -27,7 +27,7 @@ export const useBeerStore = create<BeerStore>((set, get) => ({
   },
   toggleBeerSelection: (beerId: number) => {
     set((state) => {
-      const selectedBeers = state.selectedBeers;
+      const selectedBeers = new Set(state.selectedBeers);
       if (selectedBeers.has(beerId)) {
         selectedBeers.delete(beerId);
       } else {
