@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useBeerStore } from "./store/beerStore";
 import { AutoSizer, List, ListRowProps } from "react-virtualized";
 import "./App.css";
@@ -19,17 +19,23 @@ const App: React.FC = () => {
     }
   }, []);
 
-  const handleRecipeClick = (recipeId: number) => {
-    navigate(`/recipes/${recipeId}`);
-  };
+  const handleRecipeClick = useCallback(
+    (recipeId: number) => {
+      navigate(`/recipes/${recipeId}`);
+    },
+    [navigate]
+  );
 
-  const handleRightClick = (recipeId: number) => {
-    toggleBeerSelection(recipeId);
-  };
+  const handleRightClick = useCallback(
+    (recipeId: number) => {
+      toggleBeerSelection(recipeId);
+    },
+    [toggleBeerSelection]
+  );
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     deleteSelectedBeers();
-  };
+  }, [deleteSelectedBeers]);
 
   const rowRenderer = (props: ListRowProps) => {
     return (
