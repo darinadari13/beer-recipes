@@ -4,6 +4,7 @@ import { AutoSizer, List } from "react-virtualized";
 import "./App.css";
 import Row from "./components/Row/Row";
 import { useNavigate } from "react-router-dom";
+import type { TRowRenderProps } from "./types";
 
 const App: React.FC = () => {
   const beers = useBeerStore((state) => state.beers.slice(0, 15));

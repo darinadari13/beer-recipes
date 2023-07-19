@@ -2,8 +2,8 @@ import "./Row.css";
 import type { TRowProps } from "./types";
 
 const Row: React.FC<TRowProps> = ({ list, index, selectedRows, onRecipeClick, onRightClick, style }) => {
-  const recipe = list[index];
-  const recipeId = recipe.id;
+  const recipeId = list[index].id;
+
   const handleRecipeClick = () => {
     onRecipeClick(recipeId);
   };

@@ -1,0 +1,14 @@
+.beerContainer {
+  padding: 15px;
+}
+.beerHeading {
+  text-decoration: underline;
+  padding-left: 15px;
+}
+.beerImg {
+  width: 100px;
+}
+.beerDescription {
+  font-weight: 700;
+  font-size: 18px;
+}

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useBeerStore } from "../store/beerStore";
+import "./RecipePage.css";
 
 const RecipePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -7,10 +8,10 @@ const RecipePage: React.FC = () => {
   const beer = useBeerStore((state) => state.beers.find((beer) => beer.id === beerId));
 
   return (
-    <div>
-      <h1>{beer?.name}</h1>
-      <img src={beer?.image_url} alt="beer bottle" />
-      <p>{beer?.description}</p>
+    <div className="beerContainer">
+      <h1 className="beerHeading">{beer?.name}</h1>
+      <img src={beer?.image_url} alt="beer bottle" className="beerImg" />
+      <p className="beerDescription">{beer?.description}</p>
       <span>Adv: {beer?.abv}</span>
     </div>
   );
