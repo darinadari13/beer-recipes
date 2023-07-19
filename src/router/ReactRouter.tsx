@@ -4,8 +4,7 @@ import RecipePage from "../pages/RecipePage";
 
 const RegularRouter = () => {
   return (
-    <HashRouter>
-      <App />
+    <HashRouter basename="/beer-recipes">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/recipes/:id" element={<RecipePage />} />
